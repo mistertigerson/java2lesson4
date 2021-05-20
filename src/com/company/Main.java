@@ -1,26 +1,20 @@
 package com.company;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args)  {
-        System.out.println("введите 5 слов");
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String first = scanner.next();
-        String second = scanner.next();
-        String third = scanner.next();
-        String fourth = scanner.next();
-        String fifth = scanner.next();
-
-        System.out.println("введите еще раз 5 слов");
         ArrayList<String> arrayA = new ArrayList<>();
-        arrayA.add(first);
-        arrayA.add(second);
-        arrayA.add(third);
-        arrayA.add(fourth);
-        arrayA.add(fifth);
+        ArrayList<String> arrayB = new ArrayList<>();
+        ArrayList<String> arrayC = new ArrayList<>();
 
+        System.out.println("введите 5 слов");
+        for (int i = 0; i < 5; i++) {
+            arrayA.add(scanner.next());
+        }
 
         Iterator<String> iterator = arrayA.iterator();
         System.out.println("--------------------------");
@@ -28,49 +22,47 @@ public class Main {
         while (iterator.hasNext()){
             System.out.println(iterator.next());
         }
-
-        String firstb = scanner.next();
-        String secondb = scanner.next();
-        String thirdb = scanner.next();
-        String fourthb = scanner.next();
-        String fifthb = scanner.next();
-
-        ArrayList<String> arrayB = new ArrayList<>();
-        arrayB.add(firstb);
-        arrayB.add(secondb);
-        arrayB.add(thirdb);
-        arrayB.add(fourthb);
-        arrayB.add(fifthb);
-
+        System.out.println("введите еще 5 слов");
+        for (int i = 0; i < 5; i++) {
+            arrayB.add(scanner.next());
+        }
         Iterator<String> iterator1 = arrayB.iterator();
         System.out.println("-----------------------------");
 
         while (iterator1.hasNext()){
             System.out.println(iterator1.next());
         }
-
-        ArrayList<String> arrayC = new ArrayList<>();
-        arrayC.add(0,first);
-        arrayC.add(1,fifthb);
-        arrayC.add(2,second);
-        arrayC.add(3,fourthb);
-        arrayC.add(4,third);
-        arrayC.add(5,thirdb);
-        arrayC.add(6,fourth);
-        arrayC.add(7,secondb);
-        arrayC.add(8,fifth);
-        arrayC.add(9,firstb);
-
-
-        Collections.sort(arrayC, new LengthFirstComparator());
+        int number = 0;
+        int number1 = 4;
+        System.out.println("-----------------------------");
+        for (int i = 0; i < 10; i++) {
+            if (i % 2 == 0) {
+                arrayC.add(i, arrayA.get(number));
+                number++;
+            } else {
+                arrayC.add(i, arrayB.get(number1));
+                number1--;
+            }
+        }
 
         Iterator<String> iterator2 = arrayC.iterator();
-        System.out.println("----------------------------");
 
-        while ((iterator2.hasNext())){
+        while (iterator2.hasNext()){
             System.out.println(iterator2.next());
         }
+
+        System.out.println("----------------------------");
+        Collections.sort(arrayC, new LengthFirstComparator());
+        Iterator<String> iterator3 = arrayC.iterator();
+
+        while ((iterator3.hasNext())){
+            System.out.println(iterator3.next());
+        }
+
 
 
     }
 }
+
+
+
